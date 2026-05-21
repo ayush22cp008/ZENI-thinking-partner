@@ -177,9 +177,7 @@ This project was built using AI coding assistants including Claude (Anthropic) a
 
 ## Author
 
-**Ayush Halpati**
-B.Tech Computer Engineering — BVM Engineering College, Vallabh Vidyanagar
-Internship at Invisible Fiction, V.V. Nagar, Anand, Gujarat
+**Ayush Halpati**  
 GitHub: https://github.com/ayush22cp008
 
 ---
