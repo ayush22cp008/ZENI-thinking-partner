@@ -1,4 +1,4 @@
-# ZENI — Private AI Thinking Companion
+# ZENI — Private AI Thinking Partner
 
 A real-time, offline-first computer engineering companion for brainstorming, structuring thoughts, and compiling master prompts for AI coding agents.
 
