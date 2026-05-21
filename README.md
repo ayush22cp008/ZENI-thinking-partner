@@ -1,6 +1,6 @@
 # ZENI — Private AI Thinking Partner
 
-A real-time, offline-first computer engineering companion for brainstorming, structuring thoughts, and compiling master prompts for AI coding agents.
+A real-time, offline-first computer engineering partner for brainstorming, structuring thoughts, and compiling master prompts for AI coding agents.
 
 [![Mode](https://img.shields.io/badge/Mode-Offline--First%20%2F%20Private-blue)](#)
 [![LLM](https://img.shields.io/badge/LLMs-Ollama%20%2F%20Groq%20Cloud-orange)](https://ollama.com/)
