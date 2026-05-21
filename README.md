@@ -20,6 +20,20 @@ ZENI operates on a dual-mode architecture. By default, it is **fully private and
 
 ---
 
+## Why ZENI is an AI Agent
+
+Unlike a standard chatbot, ZENI operates as an autonomous AI agent because it:
+
+- **Plans** — Automatically breaks your raw brain dump into structured Goals, Tasks, Hypotheses, and Next Steps without being asked
+- **Acts** — Generates executable prompts for downstream coding agents like Antigravity, Cursor, and Claude
+- **Adapts** — Dynamically changes its behavior and system prompt based on the active project context you provide
+- **Persists** — Maintains full session state, chat history, and XP progression across conversations via browser storage
+- **Routes** — Intelligently switches between Local LLM (Ollama) and Cloud API (Groq) based on environment configuration
+
+ZENI is a single-agent system designed to orchestrate your thinking process and feed structured, high-quality instructions to downstream coding agents — turning chaotic ideas into buildable systems.
+
+---
+
 ## Features
 
 - **Adaptive Neural Workspace** — Dynamically builds system prompts from the active project context (Project Name, Stack, Goal). Automatically switches to "quick-dump mode" when no project context is provided.
@@ -54,7 +68,9 @@ ZENI operates on a dual-mode architecture. By default, it is **fully private and
 3. **Internal Translation (Optional):** If Gujarati mode is toggled, ZENI uses the LLM to translate inputs to English before sending them to the chat model.
 4. **Structured Parsing:** ZENI extracts JSON formats from `<structured>` tags in responses, separating dialogue from actionable tasks and rendering them in the structured summary container.
 5. **Gamification Progression:** The system calculates the power rating based on active metrics:
-   $$\text{XP} = (\text{sessions} \times 100) + (\text{hoursSpent} \times 500) + (\text{problemsSolved} \times 200) + (\text{promptsGenerated} \times 150)$$
+
+   XP = (sessions × 100) + (hoursSpent × 500) + (problemsSolved × 200) + (promptsGenerated × 150)
+
    When the XP matches a new tier, a "ZENI Evolved" level-up screen triggers, and the theme updates globally.
 6. **Prompt Extraction:** The developer uses **SNAP** or **READY TO BUILD** to extract the conversation as a master prompt, or downloads the session as a markdown report.
 
@@ -66,16 +82,16 @@ ZENI features 10 distinct power forms that shift the visual styling of the user 
 
 | Form | Required XP | Accent Color | Visual Theme & Elements |
 |---|---|---|---|
-| **ZENI AWAKENED** | `0` | `#7c3aed` (Purple) | Initial form. Spiky hair warrior aura SVG background. |
-| **ZENI KAIOKEN** | `500` | `#dc2626` (Red) | Red glow, crimson borders. Cloaked silhouette background. |
-| **ZENI GOLDEN** | `1,500` | `#fbbf24` (Gold) | Gold aura, bright yellow glows, gold spiky accents. |
-| **ZENI CHARGED** | `4,000` | `#f59e0b` (Amber) | High brightness golden aura, orange lightning flashes. |
-| **ZENI UNLEASHED** | `9,000` | `#f97316` (Orange) | Headband ninja style orange theme, orange details. |
-| **ZENI DIVINE** | `20,000` | `#ef4444` (Light Red) | Crimson red theme, high-saturation red glows. |
-| **ZENI ASCENDED** | `40,000` | `#06b6d4` (Teal) | Cyan borders, teal aura lines, cyan particle glows. |
-| **ZENI INSTINCT** | `80,000` | `#94a3b8` (Silver) | Silver-grey accents, dark panel shading, clean white text. |
-| **ZENI PERFECTED** | `150,000` | `#ffffff` (White) | Stark white accents, high brightness, border glows. |
-| **ZENI INFINITE** | `300,000` | `#a78bfa` (Violet) | Ultra-glowing violet borders, dark backgrounds. |
+| **ZENI AWAKENED** | 0 | #7c3aed (Purple) | Initial form. Spiky hair warrior aura SVG background. |
+| **ZENI KAIOKEN** | 500 | #dc2626 (Red) | Red glow, crimson borders. Cloaked silhouette background. |
+| **ZENI GOLDEN** | 1,500 | #fbbf24 (Gold) | Gold aura, bright yellow glows, gold spiky accents. |
+| **ZENI CHARGED** | 4,000 | #f59e0b (Amber) | High brightness golden aura, orange lightning flashes. |
+| **ZENI UNLEASHED** | 9,000 | #f97316 (Orange) | Headband ninja style orange theme, orange details. |
+| **ZENI DIVINE** | 20,000 | #ef4444 (Light Red) | Crimson red theme, high-saturation red glows. |
+| **ZENI ASCENDED** | 40,000 | #06b6d4 (Teal) | Cyan borders, teal aura lines, cyan particle glows. |
+| **ZENI INSTINCT** | 80,000 | #94a3b8 (Silver) | Silver-grey accents, dark panel shading, clean white text. |
+| **ZENI PERFECTED** | 150,000 | #ffffff (White) | Stark white accents, high brightness, border glows. |
+| **ZENI INFINITE** | 300,000 | #a78bfa (Violet) | Ultra-glowing violet borders, dark backgrounds. |
 
 ---
 
@@ -85,34 +101,31 @@ ZENI features 10 distinct power forms that shift the visual styling of the user 
 |---|---|
 | **Frontend-Only Architecture (No Backend)** | Decoupled server dependencies. Communicated directly with Ollama using Vite's server proxy config (`vite.config.js`) to bypass CORS blocks in development, and wrote direct API integrations to Groq for Vercel/production deployment. |
 | **Generic AI Personality Overfit** | Standard chat models default to generic, wordy advice and corporate bullet points, which stall rapid developer brainstorming. Through multiple prompt iterations, ZENI was constrained by a custom-compiled system prompt to be direct, sharp, refuse conversational fluff, push back on vague ideas, and end every turn with exactly one thought-provoking question. |
-| **Hardcoded Style Values** | Removed hardcoded hex values (like purple `#7c3aed`) from layouts. Replaced them with dynamic styling bindings (`C.accent`, `C.glow`, `C.border`, `C.panel`) mapped dynamically to the current gamified form. |
-| **Groq Model Decommissioning** | The decommissioned model `llama3-8b-8192` returned `400 Bad Request` errors. Migrated the API integration configuration to utilize `llama-3.1-8b-instant`. |
+| **Hardcoded Style Values** | Removed hardcoded hex values (like purple #7c3aed) from layouts. Replaced them with dynamic styling bindings (C.accent, C.glow, C.border, C.panel) mapped dynamically to the current gamified form. |
+| **Groq Model Decommissioning** | The decommissioned model llama3-8b-8192 returned 400 Bad Request errors. Migrated the API integration configuration to utilize llama-3.1-8b-instant. |
 | **Scrollbar Layout Aesthetics** | Replaced default browser scrollbars with custom CSS overrides. Hid track lines and set minimalist scrollbars with translucent thumbs for a clean workspace interface. |
 
 ---
 
 ## Project Structure
-
-```
-thinking-companion/
-├── public/                 # Static assets
-│   ├── dragon.png          # Logo asset for evolution overlays
-│   ├── favicon.svg         # Application icon
-│   └── icons.svg           # UI icons
+thinking-partner/
+├── public/
+│   ├── dragon.png
+│   ├── favicon.svg
+│   └── icons.svg
 ├── src/
-│   ├── assets/             # Sub-assets
-│   ├── App.css             # Component-level styles
-│   ├── App.jsx             # Main application file (routing, API helpers, UI)
-│   ├── index.css           # Global styles, scrollbar setups, keyframe animations
-│   └── main.jsx            # React root mount
-├── .env                    # Local environment config (git-ignored)
-├── .env.example            # Environment template config
-├── .gitignore              # Ignored files (node_modules, .env)
-├── eslint.config.js        # Linter configuration
-├── index.html              # Main HTML frame
-├── package.json            # Scripts and dependencies
-└── vite.config.js          # Vite config (Conditional proxy for local Ollama)
-```
+│   ├── assets/
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .env
+├── .env.example
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+└── vite.config.js
 
 ---
 
@@ -120,51 +133,57 @@ thinking-companion/
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v18 or later recommended)
-- [Ollama](https://ollama.com/) (Required for local/private mode)
-  - Install Ollama and pull the Llama 3.2 model:
-    ```bash
-    ollama run llama3.2
-    ```
+- [Node.js](https://nodejs.org/) v18 or later
+- [Ollama](https://ollama.com/) — required for local/private mode
+
+```bash
+ollama run llama3.2
+```
 
 ### Installation
 
-1. Clone or download this repository.
-2. Open a terminal in the project directory.
-3. Install the dependencies:
-   ```bash
-   npm install
-   ```
+```bash
+git clone https://github.com/ayush22cp008/ZENI-thinking-partner.git
+cd ZENI-thinking-partner
+npm install
+```
 
 ### Environment Configuration
 
-Create a `.env` file in the root directory (or copy `.env.example`):
 ```bash
-# Set mode to 'private' (local Ollama) or 'demo' (Groq Cloud)
-VITE_MODE=private
+# Copy the example file
+cp .env.example .env
 
-# If VITE_MODE=demo, add your Groq API key (get one from https://console.groq.com)
+# Edit .env and set your mode
+VITE_MODE=private
 VITE_GROQ_API_KEY=your_groq_api_key_here
 ```
 
-### Running the Application
+### Running
 
-Start the local development server:
 ```bash
 npm run dev
 ```
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+Open http://localhost:5173
+
+---
+
+## Built With AI-Assisted Development
+
+This project was built using AI coding assistants including Claude (Anthropic) and Antigravity. All architecture decisions, system design, debugging logic, and product thinking were done independently. AI tools were used to accelerate implementation — similar to how developers use Stack Overflow or documentation.
 
 ---
 
 ## Author
 
-**Ayush Halpati**  
-B.Tech Computer Engineering — BVM Engineering College, Vallabh Vidyanagar  
+**Ayush Halpati**
+B.Tech Computer Engineering — BVM Engineering College, Vallabh Vidyanagar
 Internship at Invisible Fiction, V.V. Nagar, Anand, Gujarat
+GitHub: https://github.com/ayush22cp008
 
 ---
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+MIT License — see LICENSE file for details.
