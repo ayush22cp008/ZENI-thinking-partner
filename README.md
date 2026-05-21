@@ -38,9 +38,9 @@ ZENI is a single-agent system designed to orchestrate your thinking process and 
 
 - **Adaptive Neural Workspace** — Dynamically builds system prompts from the active project context (Project Name, Stack, Goal). Automatically switches to "quick-dump mode" when no project context is provided.
 - **THINK Mode** — An interactive, chat-based thinking environment with streamed token responses. ZENI is tuned to be concise and direct, pushing back on vague ideas and ending every response with a single, sharp follow-up question.
-- **FORGE Mode** — A prompt-engineering workbench that refines rough concepts into high-quality instructions. Includes a one-click **✨ Enhance** system to structure instructions and a copy utility.
-- **SNAP Prompt (⚡ SNAP)** — A granular prompt-capturing utility next to every message. It captures the context of the active conversation up to that point and compiles it into a single, high-quality instruction.
-- **READY TO BUILD (🚀 READY TO BUILD)** — Instantly converts a complete multi-turn THINK session and its parsed, structured parameters into a single master instruction, capped with the directive: *"Build this now. Ask if anything unclear."*
+- **FORGE Mode** — A prompt-engineering workbench that refines rough concepts into high-quality instructions. Includes a one-click **Enhance** system to structure instructions and a copy utility.
+- **SNAP Prompt (SNAP)** — A granular prompt-capturing utility next to every message. It captures the context of the active conversation up to that point and compiles it into a single, high-quality instruction.
+- **READY TO BUILD (READY TO BUILD)** — Instantly converts a complete multi-turn THINK session and its parsed, structured parameters into a single master instruction, capped with the directive: *"Build this now. Ask if anything unclear."*
 - **Structured Metadata Parsing** — Real-time parsing of `<structured>` XML-like blocks containing JSON objects. Goals, Tasks, Hypotheses, and Next Steps are extracted and displayed in dedicated, neon-stylized sidebar sections.
 - **Bilingual Gujarati Translation Engine** — A built-in toggle allowing input in Gujarati. ZENI automatically translates queries to English internally to ensure LLM prompt coherence, while keeping the interface language fluid.
 - **Gamified Power & Theme Engine** — Gamifies coding sessions using activity metrics. Earning XP updates the user's power level and triggers real-time CSS theme-shifting (color accents, glows, custom SVG character background layouts, and a level-up overlay).
