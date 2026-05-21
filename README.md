@@ -42,7 +42,7 @@ ZENI is a single-agent system designed to orchestrate your thinking process and 
 - **SNAP Prompt (SNAP)** — A granular prompt-capturing utility next to every message. It captures the context of the active conversation up to that point and compiles it into a single, high-quality instruction.
 - **READY TO BUILD (READY TO BUILD)** — Instantly converts a complete multi-turn THINK session and its parsed, structured parameters into a single master instruction, capped with the directive: *"Build this now. Ask if anything unclear."*
 - **Structured Metadata Parsing** — Real-time parsing of `<structured>` XML-like blocks containing JSON objects. Goals, Tasks, Hypotheses, and Next Steps are extracted and displayed in dedicated, neon-stylized sidebar sections.
-- **Bilingual Gujarati Translation Engine** — A built-in toggle allowing input in Gujarati. ZENI automatically translates queries to English internally to ensure LLM prompt coherence, while keeping the interface language fluid.
+- **Gujarati + Romanized Gujarati Input Support** — A built-in toggle allowing users to brain-dump in Gujarati or romanized Gujarati. ZENI translates the input into clear English internally to keep downstream AI prompts structured and coherent.
 - **Gamified Power & Theme Engine** — Gamifies coding sessions using activity metrics. Earning XP updates the user's power level and triggers real-time CSS theme-shifting (color accents, glows, custom SVG character background layouts, and a level-up overlay).
 
 ---
@@ -65,7 +65,7 @@ ZENI is a single-agent system designed to orchestrate your thinking process and 
 
 1. **Context Initialization:** The user provides active project context parameters (name, stack, goal) in the **ZENI Core** configuration panel.
 2. **Dual-Mode API Gating:** The application checks the environment settings (`VITE_MODE`). It chooses either the local Ollama endpoint (`/ollama/api/chat`) via a Vite proxy or the secure Vercel serverless endpoint (`/api/groq`), which calls Groq with a server-side API key.
-3. **Internal Translation (Optional):** If Gujarati mode is toggled, ZENI uses the LLM to translate inputs to English before sending them to the chat model.
+3. **Internal Translation (Optional):** If Gujarati mode is toggled, ZENI uses the LLM to translate Gujarati or romanized Gujarati input to English before sending it to the chat model.
 4. **Structured Parsing:** ZENI extracts JSON formats from `<structured>` tags in responses, separating dialogue from actionable tasks and rendering them in the structured summary container.
 5. **Gamification Progression:** The system calculates the power rating based on active metrics:
 
