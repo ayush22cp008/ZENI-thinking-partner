@@ -55,7 +55,7 @@ ZENI is a single-agent system designed to orchestrate your thinking process and 
 | **Styling & Animation** | TailwindCSS v4, Vanilla CSS (glow cycles, aura transforms, scanline layers) |
 | **Local LLM Orchestrator** | Ollama (Model: `llama3.2`) |
 | **Cloud LLM Orchestrator** | Groq Cloud API (Model: `llama-3.1-8b-instant`) |
-| **Environment Control** | dotenv (`.env` file gating) |
+| **Environment Control** | dotenv (`.env` file gating) + Vercel serverless env vars |
 | **State & Persistence** | React hooks (`useState`, `useEffect`, `useRef`), Browser LocalStorage |
 | **Build Tooling & Server** | Vite HMR, http-proxy configuration |
 
@@ -64,7 +64,7 @@ ZENI is a single-agent system designed to orchestrate your thinking process and 
 ## How It Works
 
 1. **Context Initialization:** The user provides active project context parameters (name, stack, goal) in the **ZENI Core** configuration panel.
-2. **Dual-Mode API Gating:** The application checks the environment settings (`VITE_MODE`). It chooses either the local Ollama endpoint (`/ollama/api/chat`) via a Vite proxy or the Groq cloud completions endpoint (`https://api.groq.com/openai/v1/chat/completions`) using custom headers.
+2. **Dual-Mode API Gating:** The application checks the environment settings (`VITE_MODE`). It chooses either the local Ollama endpoint (`/ollama/api/chat`) via a Vite proxy or the secure Vercel serverless endpoint (`/api/groq`), which calls Groq with a server-side API key.
 3. **Internal Translation (Optional):** If Gujarati mode is toggled, ZENI uses the LLM to translate inputs to English before sending them to the chat model.
 4. **Structured Parsing:** ZENI extracts JSON formats from `<structured>` tags in responses, separating dialogue from actionable tasks and rendering them in the structured summary container.
 5. **Gamification Progression:** The system calculates the power rating based on active metrics:
@@ -156,7 +156,9 @@ cp .env.example .env
 
 # Edit .env and set your mode
 VITE_MODE=private
-VITE_GROQ_API_KEY=your_groq_api_key_here
+
+# If VITE_MODE=demo, add your Groq API key server-side
+GROQ_API_KEY=your_groq_api_key_here
 ```
 
 ### Running

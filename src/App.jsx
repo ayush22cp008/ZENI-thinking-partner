@@ -7,13 +7,10 @@ const IS_DEMO = import.meta.env.VITE_MODE === 'demo'
 
 const API_CONFIG = IS_DEMO
   ? {
-      chatUrl:     'https://api.groq.com/openai/v1/chat/completions',
-      generateUrl: 'https://api.groq.com/openai/v1/chat/completions',
+      chatUrl:     '/api/groq',
+      generateUrl: '/api/groq',
       model:       'llama-3.1-8b-instant',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`,
-      },
+      headers:     { 'Content-Type': 'application/json' },
     }
   : {
       chatUrl:     '/ollama/api/chat',
