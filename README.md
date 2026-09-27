@@ -20,6 +20,10 @@ A real-time, offline-first computer engineering partner for brainstorming, struc
 
 ---
 
+## Problem Statement
+
+Multi-tool AI workflows (Claude for architecture, ChatGPT/Grok for iteration, Antigravity for execution) are powerful but chaotic — raw brainstorming gets lost between tools, and translating a scattered chat into a clean, agent-ready prompt is manual, repetitive work every single time. ZENI solves this by capturing unstructured developer thoughts in one place, structuring them in real time, and compiling them into a single execution-ready prompt — while staying fully private and offline-first by default (local Ollama), so sensitive project context never has to leave the machine.
+
 ## Overview
 
 **ZENI** is a high-performance, personalized AI thinking partner designed specifically to bridge the gap between chaotic developer brainstorming ("brain-dumping") and structured, agent-ready code generation. By capturing raw, unstructured inputs (thoughts, bugs, design ideas, or code blocks), ZENI processes them in real time, parses goals and next steps, and helps the developer forge them into perfect, executable prompts for coding subagents (like Antigravity, Cursor, or Claude).
