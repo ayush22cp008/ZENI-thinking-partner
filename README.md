@@ -55,11 +55,15 @@ ZENI operates on a dual-mode architecture. By default, it is **fully private and
 | **Core UI Framework**      | React 19 (JavaScript), Vite 8                                               |
 | **Styling & Animation**    | TailwindCSS v4, Vanilla CSS (glow cycles, aura transforms, scanline layers) |
 | **Local LLM Orchestrator** | Ollama (Model: `llama3.2`)                                                  |
-| **Cloud LLM Orchestrator** | Groq Cloud API (Model: `llama-3.1-8b-instant`)                              |
-| **Environment Control**    | dotenv (`.env` file gating)                                                 |
+| **Cloud LLM Orchestrator** | Groq Cloud API (Model: `openai/gpt-oss-20b`)                                |
+| **Environment Control**    | dotenv (`.env` file gating) + Vercel serverless env vars                    |
 | **State & Persistence**    | React hooks (`useState`, `useEffect`, `useRef`), Browser LocalStorage       |
 | **Build Tooling & Server** | Vite HMR, http-proxy configuration                                          |
 | **Deployment**             | Vercel (Demo Mode)                                                          |
+| **Environment Control** | dotenv (`.env` file gating) + Vercel serverless env vars |
+| **State & Persistence** | React hooks (`useState`, `useEffect`, `useRef`), Browser LocalStorage |
+| **Build Tooling & Server** | Vite HMR, http-proxy configuration |
+>>>>>>> cd58d14 (fix: update deprecated Groq model from llama-3.1-8b-instant to openai/gpt-oss-20b)
 
 ---
 
@@ -105,7 +109,7 @@ ZENI features 10 distinct power forms that shift the visual styling of the user 
 | **Frontend-Only Architecture (No Backend)** | Decoupled server dependencies. Communicated directly with Ollama using Vite's server proxy config (`vite.config.js`) to bypass CORS blocks in development, and wrote direct API integrations to Groq for Vercel/production deployment.                                                                |
 | **Generic AI Personality Overfit**          | Standard chat models default to generic, wordy advice and corporate bullet points, which stall rapid developer brainstorming. Through multiple prompt iterations, ZENI was constrained by a custom-compiled system prompt to be direct, sharp, refuse conversational fluff, push back on vague ideas, and end every turn with exactly one thought-provoking question. |
 | **Hardcoded Style Values**                  | Removed hardcoded hex values (like purple `#7c3aed`) from layouts. Replaced them with dynamic styling bindings (`C.accent`, `C.glow`, `C.border`, `C.panel`) mapped dynamically to the current gamified form.                                                                                         |
-| **Groq Model Decommissioning**              | The decommissioned model `llama3-8b-8192` returned `400 Bad Request` errors. Migrated the API integration configuration to utilize `llama-3.1-8b-instant`.                                                                                                                                            |
+| **Groq Model Decommissioning**              | The decommissioned model `llama-3.1-8b-instant` returned `400 Bad Request` errors. Migrated the API integration configuration to utilize `openai/gpt-oss-20b`.                                                                                                                                         |
 | **Scrollbar Layout Aesthetics**             | Replaced default browser scrollbars with custom CSS overrides. Hid track lines and set minimalist scrollbars with translucent thumbs for a clean workspace interface.                                                                                                                                 |
 
 ---

@@ -9,7 +9,7 @@ const API_CONFIG = IS_DEMO
   ? {
       chatUrl:     '/api/groq',
       generateUrl: '/api/groq',
-      model:       'llama-3.1-8b-instant',
+      model:       'openai/gpt-oss-20b',
       headers:     { 'Content-Type': 'application/json' },
     }
   : {
@@ -1295,7 +1295,7 @@ export default function App() {
           <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: C.accent, animation: 'systemBlink 2s ease-in-out infinite' }} />
           <span>SYSTEM ONLINE</span>
           <span style={{ fontSize: '9px', color: '#2d3748', marginLeft: 'auto' }}>
-            ZENI · {IS_DEMO ? 'llama-3.1-8b-instant · Groq' : 'llama3.2 · Private'}
+            ZENI · {IS_DEMO ? 'openai/gpt-oss-20b · Groq' : 'llama3.2 · Private'}
           </span>
         </div>
       </aside>
@@ -1313,7 +1313,7 @@ export default function App() {
           }}>
             <span style={{ fontSize: '14px' }}>⚡</span>
             <span><strong>DEMO MODE</strong> — Powered by Groq Cloud · Do not enter sensitive information</span>
-            <span style={{ marginLeft: 'auto', opacity: 0.5, fontSize: '10px' }}>llama-3.1-8b-instant</span>
+            <span style={{ marginLeft: 'auto', opacity: 0.5, fontSize: '10px' }}>openai/gpt-oss-20b</span>
           </div>
         )}
         {/* Header */}
